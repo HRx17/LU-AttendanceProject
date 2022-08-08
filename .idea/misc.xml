@@ -3,8 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/drawable/account.xml" value="0.181" />
+        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/drawable/edittext_background.xml" value="0.181" />
+        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.181" />
+        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.181" />
+        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.181" />
+        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/drawable/keylog.xml" value="0.181" />
+        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_admin_login.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_registeration.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_splash.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_student_login.xml" value="0.27447916666666666" />
       </map>
     </option>
   </component>
@@ -14,7 +23,7 @@
     <option name="priority" value="Medium" />
     <option name="excludeFilter" value="" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
