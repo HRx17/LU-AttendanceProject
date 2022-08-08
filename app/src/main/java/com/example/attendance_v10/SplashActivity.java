@@ -2,6 +2,7 @@ package com.example.attendance_v10;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -19,7 +20,7 @@ import java.awt.font.TextAttribute;
 public class SplashActivity extends AppCompatActivity {
 
     private Handler mHandler = new Handler();
-    Button tosignup,tologin;
+    Button tosignup,admin;
     TextView text;
     ProgressBar progressBar;
 
@@ -33,11 +34,11 @@ public class SplashActivity extends AppCompatActivity {
 
         text = findViewById(R.id.splash_txt);
         progressBar = findViewById(R.id.pg_bar);
-        tologin = findViewById(R.id.admin);
+        admin = findViewById(R.id.admin);
         tosignup = findViewById(R.id.student);
 
         tosignup.setVisibility(View.GONE);
-        tologin.setVisibility(View.GONE);
+        admin.setVisibility(View.GONE);
 
         text.setVisibility(View.GONE);
         Animation animFadeOut = AnimationUtils.loadAnimation(this, R.anim.fadeout);
@@ -53,22 +54,39 @@ public class SplashActivity extends AppCompatActivity {
                 text.clearAnimation();
                 text.startAnimation(animFadeIn);
                 tosignup.setVisibility(View.VISIBLE);
-                tologin.setVisibility(View.VISIBLE);
+                admin.setVisibility(View.VISIBLE);
                 tosignup.clearAnimation();
                 tosignup.startAnimation(animFadeIn);
-                tologin.clearAnimation();
-                tologin.startAnimation(animFadeIn);
+                admin.clearAnimation();
+                admin.startAnimation(animFadeIn);
                 animFadeOut.reset();
                 tosignup.clearAnimation();
                 tosignup.startAnimation(animFadeOut);
-                tologin.clearAnimation();
-                tologin.startAnimation(animFadeOut);
+                admin.clearAnimation();
+                admin.startAnimation(animFadeOut);
                 animFadeIn.reset();
                 tosignup.clearAnimation();
                 tosignup.startAnimation(animFadeIn);
-                tologin.clearAnimation();
-                tologin.startAnimation(animFadeIn);
+                admin.clearAnimation();
+                admin.startAnimation(animFadeIn);
             }
         },3000);
+        
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SplashActivity.this,Admin_Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        tosignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SplashActivity.this,Registeration.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }
