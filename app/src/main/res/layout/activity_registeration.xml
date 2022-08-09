@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".Registeration">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical">
     <ImageView
         android:layout_width="wrap_content"
@@ -26,6 +28,16 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginTop="20dp"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_img"
         android:layout_width="160dp"
@@ -39,9 +51,11 @@
         android:id="@+id/studentemail"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
+        android:textColorHint="#707378"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textColor="#292B2E"
         android:background="@drawable/edittext_background"
         android:drawableLeft="@drawable/account"
         android:drawablePadding="10dp"
@@ -53,9 +67,11 @@
     <EditText
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:textColorHint="#707378"
         android:id="@+id/studentname"
         android:layout_marginTop="25dp"
         android:layout_width="match_parent"
+        android:textColor="#292B2E"
         android:layout_height="wrap_content"
         android:background="@drawable/edittext_background"
         android:drawableLeft="@drawable/ic_baseline_person_24"
@@ -66,9 +82,11 @@
     <EditText
         android:inputType="number"
         android:id="@+id/studentnumber"
+        android:textColorHint="#707378"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
+        android:textColor="#292B2E"
         android:layout_marginRight="30dp"
         android:background="@drawable/edittext_background"
         android:drawableStart="@drawable/ic_baseline_local_phone_24"
@@ -82,12 +100,14 @@
         android:id="@+id/student_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="#707378"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/edittext_background"
         android:drawableStart="@drawable/ic_baseline_location_on_24"
         android:drawablePadding="10dp"
         android:elevation="3dp"
+        android:textColor="#292B2E"
         android:hint="Your address"
         android:padding="13dp"
         android:layout_marginTop="25dp"/>
@@ -102,6 +122,8 @@
         android:background="@drawable/edittext_background"
         android:drawableLeft="@drawable/keylog"
         android:drawablePadding="10dp"
+        android:textColorHint="#707378"
+        android:textColor="#292B2E"
         android:elevation="3dp"
         android:hint="Enter Password"
         android:inputType="textPassword"
@@ -115,6 +137,7 @@
         android:gravity="center"
         android:layout_marginTop="30dp"
         android:backgroundTint="#27479A"
+        android:textColor="@color/white"
         android:text="Sign-in" />
 
     <TextView
@@ -123,6 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
+        android:textColor="#494D51"
         android:text="Already have an account?" />
 
     <TextView
@@ -132,6 +156,7 @@
         android:text="Log-In"
         android:layout_gravity="center"
         android:textColor="#27479A"
+        android:layout_marginBottom="70dp"
         android:textStyle="bold" />
 
     <ProgressBar
@@ -141,6 +166,8 @@
         android:indeterminateTint="#27479A"
         android:layout_height="wrap_content"
         android:scaleX=".5"
+        android:layout_marginBottom="40dp"
         android:scaleY=".5" />
     </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

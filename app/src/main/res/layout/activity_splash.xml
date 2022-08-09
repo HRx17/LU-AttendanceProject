@@ -12,26 +12,24 @@
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/lu_logo"/>
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:indeterminateTint="#27479A"
+        android:layout_marginTop="15dp"
         android:id="@+id/pg_bar"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Laurentian University"
-        android:textStyle="bold"
-        android:textSize="35dp"
-        android:layout_marginLeft="5dp"
-        android:textColor="#27479A"
         android:layout_gravity="center"
         android:gravity="center"
+        android:layout_marginLeft="4dp"
+        android:src="@drawable/lu_text"
         android:id="@+id/splash_txt"/>
-
         <Button
             android:id="@+id/student"
             android:layout_width="wrap_content"

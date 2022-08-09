@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="nav_home" type="id" />
+    <item name="nav_gallery" type="id" />
+    <item name="nav_slideshow" type="id" />
+    <item name="imageView" type="id" />
+    <item name="toolbar" type="id" />
+    <item name="fab" type="id" />
+    <item name="mobile_navigation" type="id" />
+</resources>

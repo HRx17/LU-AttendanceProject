@@ -3,6 +3,7 @@ package com.example.attendance_v10;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -14,6 +15,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.awt.font.TextAttribute;
 
@@ -21,8 +25,10 @@ public class SplashActivity extends AppCompatActivity {
 
     private Handler mHandler = new Handler();
     Button tosignup,admin;
-    TextView text;
+    ImageView text;
     ProgressBar progressBar;
+    FirebaseAuth auth;
+    String tokn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,7 @@ public class SplashActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_splash);
 
+        auth = FirebaseAuth.getInstance();
         text = findViewById(R.id.splash_txt);
         progressBar = findViewById(R.id.pg_bar);
         admin = findViewById(R.id.admin);
@@ -71,7 +78,23 @@ public class SplashActivity extends AppCompatActivity {
                 admin.startAnimation(animFadeIn);
             }
         },3000);
-        
+
+        auth = FirebaseAuth.getInstance();
+        SharedPreferences sharedPreferences = getSharedPreferences("token",0);
+        tokn = sharedPreferences.getString("token",null);
+
+        if(auth.getCurrentUser() != null && tokn =="20216"){
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            Toast.makeText(SplashActivity.this,"Already Logged in, Please wait!",Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+        else if(auth.getCurrentUser() != null){
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            Toast.makeText(SplashActivity.this,"Already Logged in, Please wait!",Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
         admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

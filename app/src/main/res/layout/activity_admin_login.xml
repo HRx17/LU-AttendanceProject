@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".Admin_Login">
 
     <ImageView
@@ -15,6 +16,7 @@
         android:layout_marginTop="60dp"/>
     <TextView
         android:layout_width="wrap_content"
+        android:textColorHint="#707378"
         android:layout_height="50dp"
         android:textColor="#27479A"
         android:text="Admin Log-In"
@@ -25,6 +27,8 @@
         android:layout_marginTop="30dp"/>
     <EditText
         android:id="@+id/adminuser"
+        android:textColorHint="#707378"
+        android:textColor="#292B2E"
         android:layout_width="match_parent"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
@@ -49,6 +53,8 @@
         android:drawableLeft="@drawable/keylog"
         android:drawablePadding="10dp"
         android:elevation="3dp"
+        android:textColorHint="#707378"
+        android:textColor="#292B2E"
         android:hint="Enter Password"
         android:inputType="textPassword"
         android:padding="13dp"/>
@@ -60,8 +66,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:background="@drawable/edittext_background"
+        android:textColorHint="#707378"
         android:drawableLeft="@drawable/keylog"
         android:drawablePadding="10dp"
+        android:textColor="#292B2E"
         android:elevation="3dp"
         android:hint="Enter Token Provided"
         android:inputType="textPassword"
@@ -72,6 +80,7 @@
         android:layout_height="53dp"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="140dp"
         android:backgroundTint="#27479A"
         android:text="Log-in" />
