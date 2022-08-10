@@ -9,13 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.attendance_v10.R;
+import com.example.attendance_v10.databinding.FragmentHomeBinding;
+import com.example.attendance_v10.databinding.FragmentTourBinding;
 
 public class TourFragment extends Fragment {
 
+    private FragmentTourBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_tour,container,false);
+
+        binding = FragmentTourBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
 
         return root;
     }
@@ -23,5 +28,7 @@ public class TourFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        binding = null;
     }
+
 }

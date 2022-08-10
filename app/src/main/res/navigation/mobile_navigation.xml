@@ -15,18 +15,18 @@
     <fragment
         android:id="@+id/nav_attendance"
         android:name="com.example.attendance_v10.ui.Attendance.AttendanceFragment"
-        android:label="Attendance"
+        android:label="@string/attendance"
         tools:layout="@layout/fragment_attendance" />
 
     <fragment
         android:id="@+id/nav_tour"
         android:name="com.example.attendance_v10.ui.Tour.TourFragment"
-        android:label="Book A Tour"
+        android:label="@string/tour"
         tools:layout="@layout/fragment_tour" />
 
     <fragment
     android:id="@+id/nav_logout"
     android:name="com.example.attendance_v10.ui.Logout.LogoutFragment"
-    android:label="Log-out"
+    android:label="@string/logout"
     tools:layout="@layout/fragment_logout" />
 </navigation>

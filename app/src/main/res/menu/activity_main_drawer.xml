@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view"
-    tools:ignore="MissingDefaultResource">
+    tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
@@ -10,15 +9,15 @@
             android:icon="@drawable/ic_baseline_person_24"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/attendance"
+            android:id="@+id/nav_attendance"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Attendance" />
         <item
-            android:id="@+id/tour"
+            android:id="@+id/nav_tour"
             android:icon="@drawable/ic_baseline_location_on_24"
             android:title="Book A Tour" />
         <item
-            android:id="@+id/logout"
+            android:id="@+id/nav_logout"
             android:icon="@drawable/keylog"
             android:title="Log-Out" />
     </group>

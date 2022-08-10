@@ -11,4 +11,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="attendance">Attendance</string>
+    <string name="tour">Book A Tour</string>
+    <string name="logout">Log-out</string>
 </resources>

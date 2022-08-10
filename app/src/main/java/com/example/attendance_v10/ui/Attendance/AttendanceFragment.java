@@ -9,18 +9,20 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.attendance_v10.R;
+import com.example.attendance_v10.databinding.FragmentAttendanceBinding;
+import com.example.attendance_v10.databinding.FragmentHomeBinding;
 
 public class AttendanceFragment extends Fragment {
 
+    private FragmentAttendanceBinding binding;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_attendance,container,false);
+
+        binding = FragmentAttendanceBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
 
         return root;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
 }

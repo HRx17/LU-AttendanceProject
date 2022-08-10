@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.attendance_v10.MainActivity;
 import com.example.attendance_v10.R;
+import com.example.attendance_v10.dummy_splash;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LogoutFragment extends Fragment {
@@ -35,7 +36,7 @@ public class LogoutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(context, MainActivity.class);
+                Intent intent = new Intent(context, dummy_splash.class);
                 startActivity(intent);
             }
         });
