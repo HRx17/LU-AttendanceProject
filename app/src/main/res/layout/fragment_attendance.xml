@@ -136,5 +136,84 @@
                 android:text="Select Subject" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Give Attendance"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/purple_500"
+            android:padding="5dp"
+            android:id="@+id/attendance"/>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/purple_500"
+            android:id="@+id/attendance_pg"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please Look at your Camera!"
+            android:layout_gravity="center"
+            android:textColor="@color/purple_500"
+            android:id="@+id/attendtxt"
+            android:textStyle="bold"
+            android:textSize="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scanning face Now..."
+            android:layout_gravity="center"
+            android:textColor="@color/purple_500"
+            android:id="@+id/attendtxtt"
+            android:textStyle="bold"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today's Content-"
+            android:layout_gravity="center"
+            android:layout_marginRight="120dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/purple_500"
+            android:layout_marginTop="15dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=".........................................."
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#767A83"
+            android:layout_marginTop="0dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="30dp"
+            android:text="-Dr. Grewal"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/professor_name"/>
+    </LinearLayout>
 
 </LinearLayout>
