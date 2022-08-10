@@ -181,14 +181,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Today's Content-"
-            android:layout_gravity="center"
-            android:layout_marginRight="120dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/purple_500"
@@ -198,7 +198,7 @@
             android:layout_height="wrap_content"
             android:text=".........................................."
             android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="#767A83"

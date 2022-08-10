@@ -1,8 +1,18 @@
 package com.example.attendance_v10;
 
+import static android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION;
 import static com.example.attendance_v10.databinding.ActivityMainBinding.inflate;
 
+import android.Manifest;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
@@ -11,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.example.attendance_v10.Models.Usermodels;
 import com.example.attendance_v10.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.BuildConfig;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,7 +29,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -49,6 +64,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    final int APP_STORAGE_ACCESS_REQUEST_CODE = 501;
+    private final int STORAGE_PERMISSION_CODE = 1;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     FirebaseDatabase database;
@@ -106,7 +123,78 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+        SharedPreferences sharedPreferences = getSharedPreferences("tokn",0);
+        String tmpe = String.valueOf(sharedPreferences.getString("tokn","0"));
+
+        if(tmpe.equals("0")) {
+            try {
+                Intent intent = new Intent(ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, Uri.parse("package:" + BuildConfig.APPLICATION_ID));
+                startActivityForResult(intent, APP_STORAGE_ACCESS_REQUEST_CODE);
+                SharedPreferences sharedPreferencess = getSharedPreferences("tokn",0);
+                SharedPreferences.Editor editorr = sharedPreferencess.edit();
+                editorr.putString("tokn", String.valueOf(1));
+                editorr.apply();
+                requestStoragePermission();
+            }catch(ActivityNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+
     }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == APP_STORAGE_ACCESS_REQUEST_CODE)
+        {
+            if (Environment.isExternalStorageManager())
+            {
+                SharedPreferences sharedPreferencess = getSharedPreferences("tokn",0);
+                SharedPreferences.Editor editorr = sharedPreferencess.edit();
+                editorr.putString("tokn", String.valueOf(1));
+                editorr.apply();
+                // Permission granted. Now resume your workflow.
+            }
+
+        }
+    }
+
+    private void requestStoragePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+            SharedPreferences sharedPreferences = getSharedPreferences("token",0);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("token", String.valueOf(1));
+            editor.apply();
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Permission needed")
+                    .setMessage("This permission is to download invoice")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(MainActivity.this,
+                                    new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                        }
+                    })
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
