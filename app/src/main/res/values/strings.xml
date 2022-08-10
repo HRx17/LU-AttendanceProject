@@ -14,4 +14,9 @@
     <string name="attendance">Attendance</string>
     <string name="tour">Book A Tour</string>
     <string name="logout">Log-out</string>
+
+    <string-array name="subjects">
+        <item>Mobile Computing</item>
+        <item>Machine Learning</item>
+    </string-array>
 </resources>
