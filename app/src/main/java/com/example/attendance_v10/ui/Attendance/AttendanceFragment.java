@@ -1,5 +1,7 @@
 package com.example.attendance_v10.ui.Attendance;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -13,15 +15,21 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.attendance_v10.QRcode;
 import com.example.attendance_v10.R;
 import com.example.attendance_v10.databinding.FragmentAttendanceBinding;
+import com.google.type.DateTime;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class AttendanceFragment extends Fragment {
 
@@ -52,6 +60,7 @@ public class AttendanceFragment extends Fragment {
         txt1.setVisibility(View.GONE);
         txt2.setVisibility(View.GONE);
 
+        Calendar now = Calendar.getInstance();
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         String dt = formatter.format(date);
@@ -79,22 +88,39 @@ public class AttendanceFragment extends Fragment {
         attend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Animation animFadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.fadefast);
-                        animFadeIn.reset();
-                        pg.setVisibility(View.VISIBLE);
-                        pg.clearAnimation();
-                        pg.startAnimation(animFadeIn);
-                        txt1.setVisibility(View.VISIBLE);
-                        txt1.clearAnimation();
-                        txt1.startAnimation(animFadeIn);
-                        txt2.setVisibility(View.VISIBLE);
-                        txt2.clearAnimation();
-                        txt2.startAnimation(animFadeIn);
-                    }
-                },100);
+
+                Intent intent = new Intent(getContext(), QRcode.class);
+                startActivity(intent);
+                getActivity().finish();
+
+                //SharedPreferences sharedPreferences = getActivity().getSharedPreferences("attended",0);
+                //String attended = sharedPreferences.getString("attended",null);
+
+
+                //if(attended.equals("done")){
+                 //   Toast.makeText(getContext(), "Attendance Done!", Toast.LENGTH_SHORT).show();
+                //}
+                if (9 <= now.get(Calendar.HOUR_OF_DAY) && 12 >= now.get(Calendar.HOUR_OF_DAY)) {
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Animation animFadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.fadefast);
+                            animFadeIn.reset();
+                            pg.setVisibility(View.VISIBLE);
+                            pg.clearAnimation();
+                            pg.startAnimation(animFadeIn);
+                            txt1.setVisibility(View.VISIBLE);
+                            txt1.clearAnimation();
+                            txt1.startAnimation(animFadeIn);
+                            txt2.setVisibility(View.VISIBLE);
+                            txt2.clearAnimation();
+                            txt2.startAnimation(animFadeIn);
+                        }
+                    }, 100);
+                }
+                else{
+                    Toast.makeText(getContext(), "Sorry You Missed the Lecture Hours!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

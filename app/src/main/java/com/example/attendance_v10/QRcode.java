@@ -9,12 +9,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.journeyapps.barcodescanner.ScanOptions;
 
 public class QRcode extends AppCompatActivity {
     Button btnScn;
@@ -22,7 +23,10 @@ public class QRcode extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
+        setContentView(R.layout.activity_qrcode);
         btnScn = findViewById(R.id.btnScn);
         btnScn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +60,9 @@ public class QRcode extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.dismiss();
+                    Intent intent = new Intent(QRcode.this,AttendanceGranted.class);
+                    startActivity(intent);
+                    finish();
                 }
             });
             builder.show();
