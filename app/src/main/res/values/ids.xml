@@ -7,4 +7,5 @@
     <item name="toolbar" type="id" />
     <item name="fab" type="id" />
     <item name="mobile_navigation" type="id" />
+    <item name="qrScan" type="id" />
 </resources>
