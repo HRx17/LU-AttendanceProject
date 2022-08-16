@@ -19,6 +19,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class QRcode extends AppCompatActivity {
     Button btnScn;
+    String subject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,9 @@ public class QRcode extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_qrcode);
         btnScn = findViewById(R.id.btnScn);
+        Intent intent = getIntent();
+        subject = intent.getStringExtra("subject");
+
         btnScn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +65,7 @@ public class QRcode extends AppCompatActivity {
                 public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.dismiss();
                     Intent intent = new Intent(QRcode.this,AttendanceGranted.class);
+                    intent.putExtra("subject",subject);
                     startActivity(intent);
                     finish();
                 }

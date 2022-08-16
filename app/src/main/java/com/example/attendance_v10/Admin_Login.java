@@ -43,6 +43,7 @@ public class Admin_Login extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_admin_login);
 
+        auth = FirebaseAuth.getInstance();
         user = findViewById(R.id.adminuser);
         pass = findViewById(R.id.adminPassword);
         token = findViewById(R.id.token);
@@ -57,7 +58,7 @@ public class Admin_Login extends AppCompatActivity {
                 if (inputuser.isEmpty() || inputpass.isEmpty()|| tokn.isEmpty()) {
                     Toast.makeText(Admin_Login.this, "Please Enter All The Details!", Toast.LENGTH_SHORT).show();
                 }
-                else if(token.equals("20216")){
+                else if(tokn.equals("20216")){
 
                     auth.signInWithEmailAndPassword(inputuser,inputpass)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -67,6 +68,7 @@ public class Admin_Login extends AppCompatActivity {
                                         Toast.makeText(Admin_Login.this,"Log-In Successfull!",Toast.LENGTH_SHORT).show();;
                                         Intent logMain = new Intent(Admin_Login.this, AdminMain.class);
                                         startActivity(logMain);
+                                        finish();
                                         SharedPreferences sharedPreferences = getSharedPreferences("token", 0);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
                                         editor.putString("token", token.getText().toString());

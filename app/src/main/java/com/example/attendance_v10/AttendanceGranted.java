@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.attendance_v10.Models.AttendanceCardModel;
 import com.example.attendance_v10.Models.Usermodels;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +25,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class AttendanceGranted extends AppCompatActivity {
@@ -62,13 +67,41 @@ public class AttendanceGranted extends AppCompatActivity {
 
                         } else {
                             String name = String.valueOf(usermodels.getName());
-                            DocumentReference washingtonRef = db.collection("Months").document("August");
-                            washingtonRef.update("16-08-2022", FieldValue.arrayUnion(name)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            Date date = new Date();
+                            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                            String dt = formatter.format(date);
+                            Intent intent = getIntent();
+                            String subject = intent.getStringExtra("subject");
+                            DocumentReference rr = db.collection(subject).document("August").collection("Days").document(dt);
+                            if(rr.equals(null)){
+                                Map<String, Object> userData = new HashMap<>();
+                                userData.put("Day",dt);
+                                userData.put("names","{admin}");
+
+                                db.collection(subject).document("August").collection("Days").add(userData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        DocumentReference Ref = db.collection(subject).document("August").collection("Days").document(dt);
+                                        Ref.update("Day",dt);
+                                        Ref.update("names", FieldValue.arrayUnion(name)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Toast.makeText(AttendanceGranted.this, "OK.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                            else{
+                            DocumentReference Ref = db.collection(subject).document("August").collection("Days").document(dt);
+                            Ref.update("Day",dt);
+                            Ref.update("names", FieldValue.arrayUnion(name)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Toast.makeText(AttendanceGranted.this, "OK.", Toast.LENGTH_SHORT).show();
                                 }
                             });
+                        }
                         }
                     }
 
