@@ -90,6 +90,7 @@ public class AttendanceFragment extends Fragment {
             public void onClick(View view) {
 
                 Intent intent = new Intent(getContext(), QRcode.class);
+                intent.putExtra("subject",Subject);
                 startActivity(intent);
                 getActivity().finish();
 

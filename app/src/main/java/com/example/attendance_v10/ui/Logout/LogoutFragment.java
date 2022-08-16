@@ -38,6 +38,7 @@ public class LogoutFragment extends Fragment {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(context, dummy_splash.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 

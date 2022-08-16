@@ -77,14 +77,14 @@ public class SplashActivity extends AppCompatActivity {
                 admin.clearAnimation();
                 admin.startAnimation(animFadeIn);
             }
-        },3000);
+        },2600);
 
         auth = FirebaseAuth.getInstance();
         SharedPreferences sharedPreferences = getSharedPreferences("token",0);
         tokn = sharedPreferences.getString("token",null);
 
-        if(auth.getCurrentUser() != null && tokn =="20216"){
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        if(auth.getCurrentUser() != null && tokn.equals("20216")){
+            startActivity(new Intent(SplashActivity.this, AdminMain.class));
             Toast.makeText(SplashActivity.this,"Already Logged in, Please wait!",Toast.LENGTH_SHORT).show();
             finish();
         }
