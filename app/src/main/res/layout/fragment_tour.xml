@@ -130,14 +130,16 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="344dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
-        android:text="Would you like to take a tour of campus from the comfort of your own home? Our virtual tour experience includes stops at classrooms, labs, residence spaces, the gymnasium, the beautiful Brenda Wallace Reading Room, and more! Get a feel for campus as you explore our physical spaces in stunning 360-degree photos! "
-        android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="344dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:text="Would you like to take a tour of campus from the comfort of your own home? Our virtual tour experience includes stops at classrooms, labs, the beautiful Brenda Wallace Reading Room, and more! Get a feel for campus as you explore our physical spaces in stunning photos! "
+                android:textColor="#423F3F"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView7"
@@ -161,19 +163,32 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="344dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="5dp"
-            android:text="Visiting campus is the best way to get the full experience of life at Laurentian University for your Undergraduate or Graduate degree. "
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="344dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:text="Visiting campus is the best way to get the full experience of life at Laurentian University for your Undergraduate or Graduate degree. "
+                android:textColor="#423F3F"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/book_tour_button"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="30dp"
+                android:text="BOOK A TOUR"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
 
 
         </LinearLayout>
     </ScrollView>
+
 
 
 
