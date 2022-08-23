@@ -37,6 +37,7 @@ import java.util.GregorianCalendar;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Field;
 
 public class AttendanceFragment extends Fragment {
 
@@ -99,14 +100,14 @@ public class AttendanceFragment extends Fragment {
             public void onClick(View view) {
 
 
-                //SharedPreferences sharedPreferences = getActivity().getSharedPreferences("attended",0);
-                //String attended = sharedPreferences.getString("attended",null);
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("attended",0);
+                String attended = sharedPreferences.getString("attended","null");
 
 
-                //if(attended.equals("done")){
-                 //   Toast.makeText(getContext(), "Attendance Done!", Toast.LENGTH_SHORT).show();
-                //}
-                if (9 <= now.get(Calendar.HOUR_OF_DAY) && 12 >= now.get(Calendar.HOUR_OF_DAY)) {
+                if(attended.equals("done")){
+                 Toast.makeText(getContext(), "Attendance Done!", Toast.LENGTH_SHORT).show();
+                }
+                else if (9 <= now.get(Calendar.HOUR_OF_DAY) && 12 >= now.get(Calendar.HOUR_OF_DAY)) {
                     mHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -149,10 +150,37 @@ public class AttendanceFragment extends Fragment {
                                     Toast.makeText(getContext(), "Error!", Toast.LENGTH_SHORT).show();
                                 }
                             });*/
-                            Intent intent = new Intent(getContext(), QRcode.class);
-                            intent.putExtra("subject",Subject);
-                            startActivity(intent);
-                            getActivity().finish();
+                            Call<FaceRecResponse> call = RetrofitClient.getInstance().getApi().faceResponse("");
+                            call.enqueue(new Callback<FaceRecResponse>() {
+                                @Override
+                                public void onResponse(Call<FaceRecResponse> call, @NonNull Response<FaceRecResponse> response) {
+                                    if(response.isSuccessful()){
+                                        FaceRecResponse validate1 = response.body();
+                                        assert validate1 != null;
+                                        if(validate1.getMessage().equals("hi")){
+                                            // No need for success message
+                                            //Toast.makeText(Signup.this, "Verified!", Toast.LENGTH_SHORT).show();
+                                           pg.setVisibility(View.GONE);
+                                            Intent intent = new Intent(getContext(), QRcode.class);
+                                            intent.putExtra("subject",Subject);
+                                            startActivity(intent);
+                                            getActivity().finish();
+                                        }
+                                        else{
+                                            Toast.makeText(getContext(), validate1.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                    else {
+                                        String errorMsg = "Server not reachable, please try after sometime!";
+                                        Toast.makeText(getContext(), errorMsg, Toast.LENGTH_LONG).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<FaceRecResponse> call, Throwable t) {
+                                    Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
                     }, 100);
                 }

@@ -19,6 +19,18 @@
         <item>Mobile Computing</item>
         <item>Machine Learning</item>
     </string-array>
+    <string-array name="people">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="yesno">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
     <string name="title_activity_qrcode">QRCode</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

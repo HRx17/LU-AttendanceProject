@@ -8,22 +8,6 @@
     android:background="@color/white"
     tools:context=".ui.Tour.TourFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/white"
-            android:orientation="vertical">
-    <TextView
-        android:id="@+id/text_slideshow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp" />
 
 
     <ViewFlipper
@@ -94,17 +78,28 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-35dp" />
     </ViewFlipper>
+    <ScrollView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
-
-        android:text="Two Ways to Tour"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:layout_marginTop="25dp"
+        android:text="Two Ways to Tour Laurentian University!"
         android:textColor="#3C3737"
-        android:textSize="40sp"
+        android:textSize="29sp"
         android:textStyle="bold" />
 
     <TextView
@@ -112,11 +107,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
         android:text="Virtual Campus Tour"
         android:textColor="@color/purple_500"
         android:textColorHighlight="#000000"
-        android:textSize="33sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
@@ -124,10 +119,10 @@
         android:layout_width="274dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="Can’t join us in Sudbury? We’ve got you covered!"
         android:textColor="#2C2A2A"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
             <TextView
@@ -135,11 +130,21 @@
                 android:layout_width="344dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Would you like to take a tour of campus from the comfort of your own home? Our virtual tour experience includes stops at classrooms, labs, the beautiful Brenda Wallace Reading Room, and more! Get a feel for campus as you explore our physical spaces in stunning photos! "
                 android:textColor="#423F3F"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="12sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:text="Click here to visit the Virtual Campus Tour!"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@color/purple_500"
+                android:layout_marginTop="7dp"
+                android:id="@+id/virtual_link"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -147,9 +152,9 @@
         android:layout_height="wrap_content"
         android:text="In-Person Campus Tour"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="40dp"
         android:textColor="@color/purple_500"
-        android:textSize="33sp"
+        android:textSize="30sp"
         android:textStyle="bold"/>
 
     <TextView
@@ -157,10 +162,10 @@
         android:layout_width="284dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="Get a first-hand feel for Laurentian University's campus and facilities! "
         android:textColor="#2C2A2A"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
             <TextView
@@ -168,20 +173,33 @@
                 android:layout_width="344dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Visiting campus is the best way to get the full experience of life at Laurentian University for your Undergraduate or Graduate degree. "
                 android:textColor="#423F3F"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="12sp"/>
+
 
             <Button
-                android:id="@+id/book_tour_button"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="100dp"
+                android:id="@+id/download_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="BOOK A TOUR"
+                android:layout_gravity="center"
+                android:text="View Campus Map"
+                android:backgroundTint="@color/purple_500"
+                android:drawableLeft="@drawable/ic_baseline_map_24"
                 android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/book_tour_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_gravity="center"
+                android:text="BOOK A TOUR NOW"
+                android:backgroundTint="@color/purple_500"
+                android:textColor="#FFFFFF"
+                 android:layout_marginBottom="60dp"
                 android:textStyle="bold" />
 
 
