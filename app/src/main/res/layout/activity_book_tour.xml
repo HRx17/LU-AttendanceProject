@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="382dp"
+        android:layout_height="657dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginEnd="192dp"
+                android:text="Tour Booking"
+                android:textColor="@color/purple_500"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="132dp"
+                android:text="Student Information"
+                android:textColor="#434040"
+                android:textSize="27sp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginStart="39dp"
+                android:layout_marginLeft="39dp"
+                android:layout_marginTop="28dp"
+                android:text="First name"
+                android:textColor="#514E4E"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="39dp"
+                tools:layout_editor_absoluteY="178dp" />
+
+            <EditText
+                android:id="@+id/tour_firstname"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="39dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                android:background="@drawable/edittext_bg"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="39dp"
+                android:layout_marginTop="15dp"
+                android:text="Email address  "
+                android:textColor="#514E4E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="39dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                android:background="@drawable/edittext_bg"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="39dp"
+                android:layout_marginTop="15dp"
+                android:text="Phone number"
+                android:textColor="#514E4E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="39dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                android:background="@drawable/edittext_bg"/>
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="39dp"
+                android:layout_marginTop="15dp"
+                android:text="Last name"
+                android:textColor="#514E4E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="39dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                android:background="@drawable/edittext_bg"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="132dp"
+                android:text="Tour Selection"
+                android:textColor="#434040"
+                android:textSize="27sp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="39dp"
+                android:layout_marginTop="15dp"
+                android:text="Tour Date"
+                android:textColor="#514E4E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
+
+                android:padding="2dp"
+                android:paddingVertical="5dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/auto_text"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="1dp"
+                    android:inputType="none"
+                    android:text="please select"
+                    android:textSize="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="132dp"
+                android:text="Booking Information"
+                android:textColor="#434040"
+                android:textSize="27sp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="39dp"
+                android:layout_marginTop="28dp"
+                android:text="Please note that for the following dates, Laurentian University is unable to conduct campus tours.Accommodations can be made by reaching out directly at either liaison@laurentian.ca or by calling 1-800-461-4030 ext 3109"
+                android:textColor="#514E4E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="39dp"
+                android:layout_marginTop="15dp"
+                android:text="List of Stat. Holidays and Exams:"
+                android:textColor="#514E4E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:adjustViewBounds="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="39dp"
+                android:layout_marginBottom="28dp"
+                app:srcCompat="@drawable/tour_schedule" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="39dp"
+                android:layout_marginTop="15dp"
+                android:text="Number of people on the tour"
+                android:textColor="#514E4E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
+
+                android:padding="2dp"
+                android:paddingVertical="5dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/auto_txxt"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:inputType="none"
+                    android:text="1"
+                    android:textSize="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="39dp"
+                android:layout_marginTop="15dp"
+                android:text="Would you like an appointment with the faculty (pending on faculty availability; weekdays only)"
+                android:textColor="#514E4E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
+
+                android:padding="2dp"
+                android:paddingVertical="5dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/auto_texxt"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:inputType="none"
+                    android:text="1"
+                    android:textSize="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="39dp"
+                android:layout_marginTop="15dp"
+                android:text="Would you like to see the residences?"
+                android:textColor="#514E4E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
+
+                android:padding="2dp"
+                android:paddingVertical="5dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/auto_txt"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+
+                    android:layout_marginLeft="1dp"
+                    android:inputType="none"
+                    android:text="1"
+                    android:textSize="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
+                android:backgroundTint="#A51348"
+                android:text="Cancel"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="220dp"
+                android:layout_marginTop="-50dp"
+                android:layout_marginBottom="50dp"
+                android:text="Submit"
+                android:textColor="#FFFFFF" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

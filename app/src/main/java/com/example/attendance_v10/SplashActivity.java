@@ -81,7 +81,7 @@ public class SplashActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         SharedPreferences sharedPreferences = getSharedPreferences("token",0);
-        tokn = sharedPreferences.getString("token",null);
+        tokn = sharedPreferences.getString("token","0");
 
         if(auth.getCurrentUser() != null && tokn.equals("20216")){
             startActivity(new Intent(SplashActivity.this, AdminMain.class));
