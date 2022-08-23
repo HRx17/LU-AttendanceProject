@@ -73,16 +73,16 @@ public class AttendanceGranted extends AppCompatActivity {
                             Intent intent = getIntent();
                             String subject = intent.getStringExtra("subject");
                             DocumentReference rr = db.collection(subject).document("August").collection("Days").document(dt);
-                            if(rr.equals(null)){
+                            if(rr == null) {
                                 Map<String, Object> userData = new HashMap<>();
-                                userData.put("Day",dt);
-                                userData.put("names","{admin}");
+                                userData.put("Day", dt);
+                                userData.put("names", "{}");
 
-                                db.collection(subject).document("August").collection("Days").add(userData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                db.collection(subject).document("August").collection("Days").document(dt).set(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
-                                    public void onSuccess(DocumentReference documentReference) {
+                                    public void onSuccess(Void unused) {
                                         DocumentReference Ref = db.collection(subject).document("August").collection("Days").document(dt);
-                                        Ref.update("Day",dt);
+                                        Ref.update("Day", dt);
                                         Ref.update("names", FieldValue.arrayUnion(name)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {

@@ -14,12 +14,17 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class QRcode extends AppCompatActivity {
     Button btnScn;
     String subject;
+    String code;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,13 @@ public class QRcode extends AppCompatActivity {
         setContentView(R.layout.activity_qrcode);
         btnScn = findViewById(R.id.btnScn);
         Intent intent = getIntent();
+        db = FirebaseFirestore.getInstance();
+        db.collection("Barcode").document("trWKQNNVi204Ei54T3Fw").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                code = String.valueOf(documentSnapshot.get("Id"));
+            }
+        });
         subject = intent.getStringExtra("subject");
 
         btnScn.setOnClickListener(new View.OnClickListener() {
@@ -64,10 +76,12 @@ public class QRcode extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.dismiss();
-                    Intent intent = new Intent(QRcode.this,AttendanceGranted.class);
-                    intent.putExtra("subject",subject);
-                    startActivity(intent);
-                    finish();
+                    if(code.equals(intentResult.getContents())){
+                        Intent intent = new Intent(QRcode.this,AttendanceGranted.class);
+                        intent.putExtra("subject",subject);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
             });
             builder.show();

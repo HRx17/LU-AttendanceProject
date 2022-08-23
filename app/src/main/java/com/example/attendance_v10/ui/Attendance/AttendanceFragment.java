@@ -20,9 +20,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.attendance_v10.ModelResponse.FaceRecResponse;
 import com.example.attendance_v10.QRcode;
 import com.example.attendance_v10.R;
+import com.example.attendance_v10.Retrofit.RetrofitClient;
 import com.example.attendance_v10.databinding.FragmentAttendanceBinding;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.type.DateTime;
 
 import java.sql.Time;
@@ -30,6 +33,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AttendanceFragment extends Fragment {
 
@@ -41,6 +48,7 @@ public class AttendanceFragment extends Fragment {
     ProgressBar pg;
     Handler mHandler;
     AutoCompleteTextView autoCompleteTextView;
+    FirebaseDatabase firebaseDatabase;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +63,7 @@ public class AttendanceFragment extends Fragment {
         pg = root.findViewById(R.id.attendance_pg);
         dat = root.findViewById(R.id.date);
         prof = root.findViewById(R.id.professor_name);
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         pg.setVisibility(View.GONE);
         txt1.setVisibility(View.GONE);
@@ -89,10 +98,6 @@ public class AttendanceFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getContext(), QRcode.class);
-                intent.putExtra("subject",Subject);
-                startActivity(intent);
-                getActivity().finish();
 
                 //SharedPreferences sharedPreferences = getActivity().getSharedPreferences("attended",0);
                 //String attended = sharedPreferences.getString("attended",null);
@@ -116,6 +121,38 @@ public class AttendanceFragment extends Fragment {
                             txt2.setVisibility(View.VISIBLE);
                             txt2.clearAnimation();
                             txt2.startAnimation(animFadeIn);
+
+                            /*
+                            String recFace = null;
+                            String name = null;
+
+                            Call<FaceRecResponse> call = RetrofitClient.getInstance().getApi().faceResponse(recFace);
+                            call.enqueue(new Callback<FaceRecResponse>() {
+                                @Override
+                                public void onResponse(Call<FaceRecResponse> call, Response<FaceRecResponse> response) {
+                                    FaceRecResponse faceRecResponse = response.body();
+                                    if(response.isSuccessful()){
+                                        Toast.makeText(getContext(), faceRecResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                                        String tm = faceRecResponse.getMessage();
+                                        Intent intent = new Intent(getContext(), QRcode.class);
+                                        startActivity(intent);
+                                        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("name", 0);
+                                        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+                                        editor1.putString("name", name);
+                                        editor1.apply();
+                                        //sharedPrefManager.SaveToken(loginResponse.getToken());
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<FaceRecResponse> call, Throwable t) {
+                                    Toast.makeText(getContext(), "Error!", Toast.LENGTH_SHORT).show();
+                                }
+                            });*/
+                            Intent intent = new Intent(getContext(), QRcode.class);
+                            intent.putExtra("subject",Subject);
+                            startActivity(intent);
+                            getActivity().finish();
                         }
                     }, 100);
                 }
