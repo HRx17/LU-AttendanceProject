@@ -82,7 +82,7 @@
         android:id="@+id/tosignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign-Up"
+        android:text="Register now!"
         android:textColor="#27479A"
         android:layout_gravity="center"
         android:gravity="center"

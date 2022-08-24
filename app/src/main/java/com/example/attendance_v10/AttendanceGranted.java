@@ -3,6 +3,7 @@ package com.example.attendance_v10;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -65,52 +66,31 @@ public class AttendanceGranted extends AppCompatActivity {
                         Usermodels usermodels = snapshot.getValue(Usermodels.class);
                         if (usermodels ==null) {
 
-                        } else {
+                        }
+                        else {
                             String name = String.valueOf(usermodels.getName());
                             Date date = new Date();
-                            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                            @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                             String dt = formatter.format(date);
+
                             Intent intent = getIntent();
                             String subject = intent.getStringExtra("subject");
-                            DocumentReference rr = db.collection(subject).document("August").collection("Days").document(dt);
-                            if(rr == null) {
-                                Map<String, Object> userData = new HashMap<>();
-                                userData.put("Day", dt);
-                                userData.put("names", "{}");
-
-                                db.collection(subject).document("August").collection("Days").document(dt).set(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        DocumentReference Ref = db.collection(subject).document("August").collection("Days").document(dt);
-                                        Ref.update("Day", dt);
-                                        Ref.update("names", FieldValue.arrayUnion(name)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void unused) {
-                                                Toast.makeText(AttendanceGranted.this, "OK.", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-                                    }
-                                });
+                        DocumentReference Ref = db.collection(subject).document("August").collection("Days").document(dt);
+                        Ref.update("Day",dt);
+                        Ref.update("names", FieldValue.arrayUnion(name)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(AttendanceGranted.this, "OK.", Toast.LENGTH_SHORT).show();
                             }
-                            else{
-                            DocumentReference Ref = db.collection(subject).document("August").collection("Days").document(dt);
-                            Ref.update("Day",dt);
-                            Ref.update("names", FieldValue.arrayUnion(name)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Toast.makeText(AttendanceGranted.this, "OK.", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }
-                        }
+
+                        });
                     }
+                }
 
                     @Override
-                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                    public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
-
-
     }
 }

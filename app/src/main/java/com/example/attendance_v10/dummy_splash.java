@@ -39,7 +39,7 @@ public class dummy_splash extends AppCompatActivity {
         tosignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(dummy_splash.this,Registeration.class);
+                Intent intent = new Intent(dummy_splash.this,StudentLogin.class);
                 startActivity(intent);
             }
         });

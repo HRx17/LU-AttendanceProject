@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -23,6 +24,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -33,7 +36,9 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -141,6 +146,32 @@ public class AdminMain extends AppCompatActivity {
                         Toast.makeText(AdminMain.this, "Ok", Toast.LENGTH_SHORT).show();
                     }
                 });
+                Date date = new Date();
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                String dt = formatter.format(date);
+
+                Map<String, Object> userData = new HashMap<>();
+                userData.put("Day", dt);
+                userData.put("names", "{admin}");
+
+                if(name.equals("20216")) {
+                    db.collection("Mobile Computing").document("August").collection("Days")
+                            .document(dt).set(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(AdminMain.this, "OK", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+                else{
+                    db.collection("Machine Learning").document("August").collection("Days")
+                            .document(dt).set(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(AdminMain.this, "OK", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
                 MultiFormatWriter writer = new MultiFormatWriter();
                 try
                 {

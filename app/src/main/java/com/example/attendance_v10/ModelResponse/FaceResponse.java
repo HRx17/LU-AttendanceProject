@@ -1,13 +1,12 @@
 package com.example.attendance_v10.ModelResponse;
 
-public class FaceRecResponse {
+import com.google.gson.annotations.SerializedName;
+
+public class FaceResponse {
 
     String message;
 
-    public FaceRecResponse() {
-    }
-
-    public FaceRecResponse(String message) {
+    public FaceResponse(String message) {
         this.message = message;
     }
 
