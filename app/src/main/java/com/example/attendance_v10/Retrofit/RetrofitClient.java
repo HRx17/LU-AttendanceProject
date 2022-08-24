@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private  static  String BASE_URL="http://aryan51k-55373.postman.host:55373";
+    private  static  String BASE_URL="http://aryan51k-55373.portmap.host:55373/";
     private static RetrofitClient retrofitClient;
     private static Retrofit retrofit;
 

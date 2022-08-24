@@ -38,7 +38,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:backgroundTint="#27479A"
-            android:text="Register Student"
+            android:text="Student Log-In"
             android:textColor="#fff"/>
     <Button
         android:id="@+id/admin"

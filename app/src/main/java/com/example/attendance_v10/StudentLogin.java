@@ -67,6 +67,7 @@ public class StudentLogin extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(StudentLogin.this,Registeration.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -87,6 +88,7 @@ public class StudentLogin extends AppCompatActivity {
                                 pg.setVisibility(View.GONE);
                                 Intent logMain = new Intent(StudentLogin.this, MainActivity.class);
                                 startActivity(logMain);
+                                finish();
                             } else {
                                 pg.setVisibility(View.GONE);
                                 Toast.makeText(StudentLogin.this, "Error:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();

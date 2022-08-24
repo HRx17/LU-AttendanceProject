@@ -106,7 +106,7 @@ public class SplashActivity extends AppCompatActivity {
         tosignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SplashActivity.this,Registeration.class);
+                Intent intent = new Intent(SplashActivity.this,StudentLogin.class);
                 startActivity(intent);
                 finish();
             }

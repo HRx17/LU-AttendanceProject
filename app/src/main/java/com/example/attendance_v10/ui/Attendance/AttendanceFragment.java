@@ -1,9 +1,9 @@
 package com.example.attendance_v10.ui.Attendance;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,24 +20,31 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.attendance_v10.ModelResponse.FaceRecResponse;
+import com.bumptech.glide.Glide;
+import com.example.attendance_v10.MainActivity;
+import com.example.attendance_v10.ModelResponse.FaceResponse;
+import com.example.attendance_v10.Models.Usermodels;
 import com.example.attendance_v10.QRcode;
 import com.example.attendance_v10.R;
 import com.example.attendance_v10.Retrofit.RetrofitClient;
 import com.example.attendance_v10.databinding.FragmentAttendanceBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.type.DateTime;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.JsonObject;
 
-import java.sql.Time;
+import org.jetbrains.annotations.NotNull;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Field;
 
 public class AttendanceFragment extends Fragment {
 
@@ -50,6 +57,8 @@ public class AttendanceFragment extends Fragment {
     Handler mHandler;
     AutoCompleteTextView autoCompleteTextView;
     FirebaseDatabase firebaseDatabase;
+
+    String name,link;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -99,15 +108,14 @@ public class AttendanceFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                //SharedPreferences sharedPreferences = getActivity().getSharedPreferences("attended",0);
+                //String attended = sharedPreferences.getString("attended","null");
 
-                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("attended",0);
-                String attended = sharedPreferences.getString("attended","null");
 
-
-                if(attended.equals("done")){
-                 Toast.makeText(getContext(), "Attendance Done!", Toast.LENGTH_SHORT).show();
-                }
-                else if (9 <= now.get(Calendar.HOUR_OF_DAY) && 12 >= now.get(Calendar.HOUR_OF_DAY)) {
+                //if(attended.equals("done")){
+                 //Toast.makeText(getContext(), "Attendance Done!", Toast.LENGTH_SHORT).show();
+                //}
+                if (9 <= now.get(Calendar.HOUR_OF_DAY) && 12 >= now.get(Calendar.HOUR_OF_DAY)) {
                     mHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -123,64 +131,61 @@ public class AttendanceFragment extends Fragment {
                             txt2.clearAnimation();
                             txt2.startAnimation(animFadeIn);
 
-                            /*
-                            String recFace = null;
-                            String name = null;
 
-                            Call<FaceRecResponse> call = RetrofitClient.getInstance().getApi().faceResponse(recFace);
-                            call.enqueue(new Callback<FaceRecResponse>() {
-                                @Override
-                                public void onResponse(Call<FaceRecResponse> call, Response<FaceRecResponse> response) {
-                                    FaceRecResponse faceRecResponse = response.body();
-                                    if(response.isSuccessful()){
-                                        Toast.makeText(getContext(), faceRecResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                                        String tm = faceRecResponse.getMessage();
-                                        Intent intent = new Intent(getContext(), QRcode.class);
-                                        startActivity(intent);
-                                        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("name", 0);
-                                        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-                                        editor1.putString("name", name);
-                                        editor1.apply();
-                                        //sharedPrefManager.SaveToken(loginResponse.getToken());
-                                    }
-                                }
+                            firebaseDatabase.getReference().child("Admin").child(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                            Usermodels usermodels = snapshot.getValue(Usermodels.class);
+                                            if (usermodels ==null) {
 
-                                @Override
-                                public void onFailure(Call<FaceRecResponse> call, Throwable t) {
-                                    Toast.makeText(getContext(), "Error!", Toast.LENGTH_SHORT).show();
-                                }
-                            });*/
-                            Call<FaceRecResponse> call = RetrofitClient.getInstance().getApi().faceResponse("");
-                            call.enqueue(new Callback<FaceRecResponse>() {
-                                @Override
-                                public void onResponse(Call<FaceRecResponse> call, @NonNull Response<FaceRecResponse> response) {
-                                    if(response.isSuccessful()){
-                                        FaceRecResponse validate1 = response.body();
-                                        assert validate1 != null;
-                                        if(validate1.getMessage().equals("hi")){
-                                            // No need for success message
-                                            //Toast.makeText(Signup.this, "Verified!", Toast.LENGTH_SHORT).show();
-                                           pg.setVisibility(View.GONE);
-                                            Intent intent = new Intent(getContext(), QRcode.class);
-                                            intent.putExtra("subject",Subject);
-                                            startActivity(intent);
-                                            getActivity().finish();
+                                            } else {
+                                                link = usermodels.getProfile_img();
+                                                name = usermodels.getName();
+                                                String[] names = name.split(" ");
+                                                name = names[0].toUpperCase();
+                                                //Toast.makeText(getContext(), name+""+link, Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getContext(), link, Toast.LENGTH_SHORT).show();
+                                                Call<FaceResponse> studCall = RetrofitClient.getInstance().getApi().faceResponse(link,name);
+                                                studCall.enqueue(new Callback<FaceResponse>() {
+                                                    @Override
+                                                    public void onResponse(Call<FaceResponse> call, Response<FaceResponse> response) {
+                                                        if(response.isSuccessful()) {
+                                                            if (response.body().getMessage().equals("match")) {
+                                                                // No need for success message
+                                                                Toast.makeText(getContext(), "Verified!", Toast.LENGTH_SHORT).show();
+                                                                pg.setVisibility(View.GONE);
+                                                                Intent intent = new Intent(getContext(), QRcode.class);
+                                                                intent.putExtra("subject", Subject);
+                                                                startActivity(intent);
+                                                                getActivity().finish();
+                                                            } else {
+                                                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+                                                        else{
+                                                            String errorMsg = "Server not reachable, please try after sometime!";
+                                                            //Toast.makeText(getContext(), errorMsg, Toast.LENGTH_LONG).show();
+                                                            Toast.makeText(getContext(), response.message(), Toast.LENGTH_LONG).show();
+                                                        }
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Call<FaceResponse> call, Throwable t) {
+                                                        Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                                                        System.out.print(t.getMessage());
+                                                    }
+                                                });
+
+                                            }
                                         }
-                                        else{
-                                            Toast.makeText(getContext(), validate1.getMessage(), Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                    else {
-                                        String errorMsg = "Server not reachable, please try after sometime!";
-                                        Toast.makeText(getContext(), errorMsg, Toast.LENGTH_LONG).show();
-                                    }
-                                }
 
-                                @Override
-                                public void onFailure(Call<FaceRecResponse> call, Throwable t) {
-                                    Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                                        @Override
+                                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                                        }
+                                    });
+
                         }
                     }, 100);
                 }

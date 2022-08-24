@@ -158,6 +158,7 @@ public class Registeration extends AppCompatActivity {
                                             Toast.makeText(Registeration.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
                                             Intent backtostart = new Intent(Registeration.this, MainActivity.class);
                                             startActivity(backtostart);
+                                            finish();
                                         }
                                     });
                                 }

@@ -1,7 +1,8 @@
 package com.example.attendance_v10.Retrofit;
 
-import com.example.attendance_v10.ModelResponse.FaceRecResponse;
+import com.example.attendance_v10.ModelResponse.FaceResponse;
 
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.Call;
 import retrofit2.http.FormUrlEncoded;
@@ -11,15 +12,11 @@ import retrofit2.http.Query;
 
 public interface Api {
 
-    /*@FormUrlEncoded
-    @POST("faceRecognition")
-    Call<FaceRecResponse> faceResponse(
-            @Field("recFace") String recFace
-    );*/
-
-   // @FormUrlEncoded
-    @GET("stud")
-    Call<FaceRecResponse> faceResponse(
-            @Query("message") String message
+    @FormUrlEncoded
+    @POST("stud")
+    Call<FaceResponse> faceResponse(
+            @Field("link") String link,
+            @Field("name") String name
     );
+
 }
