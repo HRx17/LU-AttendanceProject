@@ -4,7 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/drawable/account.xml" value="0.181" />
-        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/drawable/calendar_date.xml" value="0.1815" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/drawable/edittext_background.xml" value="0.181" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.1805" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.1805" />
@@ -18,18 +17,13 @@
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_admin_login.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_admin_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_attendance_granted.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_book_tour.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_dummy_splash.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_face_detection.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_qrcode.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_registeration.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_splash.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_student_login.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activity_view_all.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/activitycapturecameraimage.xml" value="0.2734375" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/app_bar_main.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/cameraview.xml" value="0.2734375" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/content_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/day_card.xml" value="0.2734375" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/dropdown_item.xml" value="0.205859375" />
@@ -41,12 +35,12 @@
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/fragment_slideshow.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/fragment_tour.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/nav_header_main.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/layout/student_card.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/menu/activity_main_drawer.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/olive/AndroidStudioProjects/attendance/app/src/main/res/menu/main.xml" value="0.27447916666666666" />
-        <entry key="app/src/main/res/layout/activity_admin_main.xml" value="0.23822463768115942" />
+        <entry key="app/src/main/res/layout/activity_admin_login.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/activity_admin_main.xml" value="0.31125472801319065" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23822463768115942" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.16145833333333334" />
       </map>
     </option>
   </component>
@@ -56,7 +50,7 @@
     <option name="priority" value="Medium" />
     <option name="excludeFilter" value="" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
