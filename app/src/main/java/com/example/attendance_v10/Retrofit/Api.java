@@ -12,11 +12,10 @@ import retrofit2.http.Query;
 
 public interface Api {
 
-    @FormUrlEncoded
-    @POST("stud")
+    @GET("stud")
     Call<FaceResponse> faceResponse(
-            @Field("link") String link,
-            @Field("name") String name
+            @Query("link") String link,
+            @Query("name") String name
     );
 
 }

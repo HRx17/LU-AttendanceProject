@@ -146,6 +146,7 @@ public class AttendanceFragment extends Fragment {
                                                 name = names[0].toUpperCase();
                                                 //Toast.makeText(getContext(), name+""+link, Toast.LENGTH_SHORT).show();
                                                 Toast.makeText(getContext(), link, Toast.LENGTH_SHORT).show();
+
                                                 Call<FaceResponse> studCall = RetrofitClient.getInstance().getApi().faceResponse(link,name);
                                                 studCall.enqueue(new Callback<FaceResponse>() {
                                                     @Override
