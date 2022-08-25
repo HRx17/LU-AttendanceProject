@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -38,6 +42,8 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -137,54 +143,74 @@ public class AdminMain extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // String sText = edit.getText().toString().trim();
-                UUID randomUUID = UUID.randomUUID();
-                String s1 = randomUUID.toString().replaceAll("_", "");
 
-                db.collection("Barcode").document("trWKQNNVi204Ei54T3Fw").update("Id",s1).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(AdminMain.this, "Ok", Toast.LENGTH_SHORT).show();
+                Calendar now = Calendar.getInstance();
+                if (9 <= now.get(Calendar.HOUR_OF_DAY) && 12 >= now.get(Calendar.HOUR_OF_DAY)) {
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("attended", 0);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("attended", "done");
+                    editor.apply();
+                    if (sharedPreferences != null) {
+                        if (sharedPreferences.getString("QR", "").equals("done")) {
+                            Toast.makeText(AdminMain.this, "Lecture Over!", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            UUID randomUUID = UUID.randomUUID();
+                            String s1 = randomUUID.toString().replaceAll("_", "");
+
+                            db.collection("Barcode").document("trWKQNNVi204Ei54T3Fw").update("Id", s1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(AdminMain.this, "Ok", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            Date date = new Date();
+                            @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                            String dt = formatter.format(date);
+
+                            Map<String, Object> userData = new HashMap<>();
+                            userData.put("Day", dt);
+                            userData.put("names", Arrays.asList("Admin"));
+
+                            if (name.equals("20216")) {
+                                db.collection("Mobile Computing").document("August").collection("Days")
+                                        .document(dt).set(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Toast.makeText(AdminMain.this, "OK", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            } else {
+                                db.collection("Machine Learning").document("August").collection("Days")
+                                        .document(dt).set(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Toast.makeText(AdminMain.this, "OK", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+                            MultiFormatWriter writer = new MultiFormatWriter();
+                            try {
+                                BitMatrix matrix = writer.encode(s1, BarcodeFormat.QR_CODE, 350, 350);
+                                BarcodeEncoder encoder = new BarcodeEncoder();
+                                bitmap = encoder.createBitmap(matrix);
+                                qrCodeIV.setImageBitmap(bitmap);
+                                qrCodeIV.setVisibility(View.VISIBLE);
+                            } catch (WriterException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
-                });
-                Date date = new Date();
-                @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-                String dt = formatter.format(date);
-
-                Map<String, Object> userData = new HashMap<>();
-                userData.put("Day", dt);
-                userData.put("names", "{admin}");
-
-                if(name.equals("20216")) {
-                    db.collection("Mobile Computing").document("August").collection("Days")
-                            .document(dt).set(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Toast.makeText(AdminMain.this, "OK", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }
-                else{
-                    db.collection("Machine Learning").document("August").collection("Days")
-                            .document(dt).set(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Toast.makeText(AdminMain.this, "OK", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }
-                MultiFormatWriter writer = new MultiFormatWriter();
-                try
-                {
-                    BitMatrix matrix = writer.encode(s1, BarcodeFormat.QR_CODE,350,350);
-                    BarcodeEncoder encoder = new BarcodeEncoder();
-                    bitmap = encoder.createBitmap(matrix);
-                    qrCodeIV.setImageBitmap(bitmap);
-                    qrCodeIV.setVisibility(View.VISIBLE);
-                }
-                catch (WriterException e) {
-                    e.printStackTrace();
+                } else {
+                    Toast.makeText(AdminMain.this, "QR can only be generated during Lectures!", Toast.LENGTH_SHORT).show();
+                    SharedPreferences sharedPreferences = getSharedPreferences("attended", 0);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("attended", "1");
+                    editor.apply();
                 }
             }
         });
+
     }
 }

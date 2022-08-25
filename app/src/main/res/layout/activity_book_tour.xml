@@ -87,6 +87,7 @@
                 android:layout_marginLeft="39dp"
                 android:ems="10"
                 android:paddingStart="7dp"
+                android:id="@+id/tour_email"
                 android:inputType="textPersonName"
                 android:textSize="15sp"
                 android:background="@drawable/edittext_bg"/>
@@ -109,6 +110,7 @@
                 android:layout_marginLeft="39dp"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:id="@+id/tour_number"
                 android:paddingStart="7dp"
                 android:textSize="15sp"
                 android:background="@drawable/edittext_bg"/>
@@ -134,6 +136,7 @@
                 android:inputType="textPersonName"
                 android:textSize="15sp"
                 android:paddingStart="7dp"
+                android:id="@+id/tour_lastname"
                 android:background="@drawable/edittext_bg"/>
 
             <TextView
@@ -323,7 +326,7 @@
                 android:layout_marginBottom="60dp"
                 android:orientation="horizontal">
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/cancel_tour"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:backgroundTint="#A51348"
@@ -333,7 +336,7 @@
                     android:textColor="#FFFFFF" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/book_tour"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="20dp"

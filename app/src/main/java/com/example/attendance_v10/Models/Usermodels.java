@@ -7,6 +7,16 @@ public class Usermodels {
     String phone;
     String address;
 
+    String click_img;
+
+    public String getClick_img() {
+        return click_img;
+    }
+
+    public void setClick_img(String click_img) {
+        this.click_img = click_img;
+    }
+
     String profile_img;
 
     public Usermodels(String profile_img) {

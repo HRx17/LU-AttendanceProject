@@ -80,7 +80,10 @@ public class AttendanceGranted extends AppCompatActivity {
                         Ref.update("names", FieldValue.arrayUnion(name)).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(AttendanceGranted.this, "OK.", Toast.LENGTH_SHORT).show();
+                                SharedPreferences sharedPreferences = getSharedPreferences("attended", 0);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("attended", "done");
+                                editor.apply();
                             }
 
                         });
