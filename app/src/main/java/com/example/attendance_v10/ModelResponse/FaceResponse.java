@@ -4,17 +4,17 @@ import com.google.gson.annotations.SerializedName;
 
 public class FaceResponse {
 
-    String message;
+    String response;
 
-    public FaceResponse(String message) {
-        this.message = message;
+    public FaceResponse(String response) {
+        this.response = response;
     }
 
-    public String getMessage() {
-        return message;
+    public String getResponse() {
+        return response;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setResponse(String response) {
+        this.response = response;
     }
 }

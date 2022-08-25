@@ -33,6 +33,7 @@ public class dummy_splash extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(dummy_splash.this,Admin_Login.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -41,6 +42,7 @@ public class dummy_splash extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(dummy_splash.this,StudentLogin.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

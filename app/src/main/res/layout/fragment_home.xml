@@ -7,11 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="30dp"
+        android:textSize="30dp"
+        android:textColor="@color/purple_500"
+        android:text="Students Card"
+        android:layout_marginTop="60dp"
+        android:textStyle="bold"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="270dp"
         android:layout_gravity="center"
         android:layout_marginLeft="5dp"
+        android:layout_marginBottom="120dp"
         android:layout_marginRight="5dp"
         android:background="@drawable/stdcard_bg"
         android:orientation="vertical">
@@ -21,11 +33,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="130dp"
                 android:layout_height="140dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="25dp"
+                android:id="@+id/card_photo"
                 android:src="@drawable/profile" />
 
             <ImageView
@@ -34,7 +47,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginLeft="20dp"
                 android:layout_height="170dp"
-                android:src="@drawable/LUsgaage" />
+                android:src="@drawable/lusgaage" />
         </LinearLayout>
 
         <LinearLayout
@@ -45,10 +58,11 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
-                android:layout_height="wrap_content"
+                android:layout_height="65dp"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/LULsecurityLOGO" />
+                android:src="@drawable/lulsecuritylogo" />
         </LinearLayout>
 
     </LinearLayout>

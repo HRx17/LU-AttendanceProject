@@ -176,6 +176,12 @@
             android:id="@+id/attendtxtt"
             android:textStyle="bold"
             android:textSize="15dp"/>
+        <ImageView
+            android:id="@+id/IVCapture"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:contentDescription="Capture" />
 
     </LinearLayout>
     <LinearLayout

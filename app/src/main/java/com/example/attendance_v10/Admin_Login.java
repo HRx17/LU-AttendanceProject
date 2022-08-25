@@ -65,14 +65,18 @@ public class Admin_Login extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
+                                        SharedPreferences sharedPreferences = getSharedPreferences("attended", 0);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("attended", "1");
+                                        editor.apply();
                                         Toast.makeText(Admin_Login.this,"Log-In Successfull!",Toast.LENGTH_SHORT).show();;
                                         Intent logMain = new Intent(Admin_Login.this, AdminMain.class);
                                         startActivity(logMain);
                                         finish();
-                                        SharedPreferences sharedPreferences = getSharedPreferences("token", 0);
-                                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putString("token", token.getText().toString());
-                                        editor.apply();
+                                        SharedPreferences sharedPreferences1 = getSharedPreferences("token", 0);
+                                        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+                                        editor1.putString("token", token.getText().toString());
+                                        editor1.apply();
                                     }
                                     else{
                                         Toast.makeText(Admin_Login.this,"Error:"+task.isSuccessful(),Toast.LENGTH_SHORT).show();
