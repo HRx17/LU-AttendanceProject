@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:text="Students Attended:-"
+        android:id="@+id/attended_total"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:textStyle="bold"

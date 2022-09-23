@@ -49,11 +49,9 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         Usermodels usermodels = snapshot.getValue(Usermodels.class);
-                        if (usermodels ==null) {
-
-                        } else {
-
+                        if (usermodels !=null) {
                             Glide.with(getActivity()).load(usermodels.getProfile_img()).into(photo);
+                        } else {
                         }
                     }
 

@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private final int STORAGE_PERMISSION_CODE = 1;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    TextView name,email;
     FirebaseDatabase database;
 
     @Override
@@ -99,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         View headerView = navigationView.getHeaderView(0);
-        TextView name = headerView.findViewById(R.id.username);
-        TextView email = headerView.findViewById(R.id.useremail);
+        name = headerView.findViewById(R.id.username);
+        email = headerView.findViewById(R.id.useremail);
         CircleImageView img = headerView.findViewById(R.id.usericon);
 
         database.getReference().child("Admin").child(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
@@ -108,12 +109,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         Usermodels usermodels = snapshot.getValue(Usermodels.class);
-                        if (usermodels ==null) {
-
-                        } else {
+                        if(usermodels !=null) {
                             name.setText(usermodels.getName());
                             email.setText(usermodels.getEmail());
                             Glide.with(MainActivity.this).load(usermodels.getProfile_img()).into(img);
+                        }else {
+
                         }
                     }
 
