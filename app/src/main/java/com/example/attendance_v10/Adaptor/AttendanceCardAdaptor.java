@@ -48,6 +48,7 @@ public class AttendanceCardAdaptor extends RecyclerView.Adapter<AttendanceCardAd
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ViewAllActivity.class);
+                intent.putExtra("day",attendanceCardModelList.get(position).getDay());
                 context.startActivity(intent);
             }
         });

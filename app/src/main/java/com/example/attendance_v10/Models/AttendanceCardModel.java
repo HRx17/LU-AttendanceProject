@@ -1,16 +1,17 @@
 package com.example.attendance_v10.Models;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class AttendanceCardModel {
    String Day;
-   List<String> names;
+   ArrayList<String> names;
 
     public AttendanceCardModel() {
     }
 
-    public AttendanceCardModel(String day, List<String> names) {
+    public AttendanceCardModel(String day, ArrayList<String> names) {
         Day = day;
         this.names = names;
     }
@@ -23,11 +24,11 @@ public class AttendanceCardModel {
         Day = day;
     }
 
-    public List<String> getNames() {
+    public ArrayList<String> getNames() {
         return names;
     }
 
-    public void setNames(List<String> names) {
+    public void setNames(ArrayList<String> names) {
         this.names = names;
     }
 }

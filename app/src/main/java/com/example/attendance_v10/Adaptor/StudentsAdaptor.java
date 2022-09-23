@@ -2,7 +2,6 @@ package com.example.attendance_v10.Adaptor;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,21 +10,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.attendance_v10.Models.AttendanceCardModel;
 import com.example.attendance_v10.R;
-import com.example.attendance_v10.ViewAllActivity;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.util.ArrayList;
 
 
 public class StudentsAdaptor extends RecyclerView.Adapter<StudentsAdaptor.ViewHolder> {
 
     private Context context;
-    private final List<AttendanceCardModel> attendanceCardModelList;
+    private final ArrayList<String> attendanceCardModelList;
 
-    public StudentsAdaptor(Context context, List<AttendanceCardModel> attendanceCardModelList) {
+    public StudentsAdaptor(Context context, ArrayList<String> attendanceCardModelList) {
         this.context = context;
         this.attendanceCardModelList = attendanceCardModelList;
     }
@@ -39,8 +36,7 @@ public class StudentsAdaptor extends RecyclerView.Adapter<StudentsAdaptor.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-
-        holder.name.setText(attendanceCardModelList.get(position).getNames().indexOf(position));
+            holder.name.setText(attendanceCardModelList.get(position));
 
     }
 

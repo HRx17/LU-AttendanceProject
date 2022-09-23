@@ -65,6 +65,7 @@ public class AdminMain extends AppCompatActivity {
     TextView logout;
     ImageView qrCodeIV;
     Button generateQrBtn;
+    String monthname=(String)android.text.format.DateFormat.format("MMMM", new Date());
     Bitmap bitmap;
 
     @Override
@@ -86,7 +87,7 @@ public class AdminMain extends AppCompatActivity {
         rec.setAdapter(attendanceCardAdaptor);
         if(name.equals("20216")){
             profname.setText("Dr. Grewal");
-            db.collection("Mobile Computing").document("August").collection("Days")
+            db.collection("Mobile Computing").document(monthname).collection("Days")
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
@@ -105,7 +106,7 @@ public class AdminMain extends AppCompatActivity {
         }
         else{
             profname.setText("Dr. Passi");
-            db.collection("Machine Learning").document("August").collection("Days")
+            db.collection("Machine Learning").document(monthname).collection("Days")
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
@@ -142,8 +143,6 @@ public class AdminMain extends AppCompatActivity {
         generateQrBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // String sText = edit.getText().toString().trim();
-
                 Calendar now = Calendar.getInstance();
                 if (9 <= now.get(Calendar.HOUR_OF_DAY) && 12 >= now.get(Calendar.HOUR_OF_DAY)) {
 
@@ -151,6 +150,7 @@ public class AdminMain extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("attended", "done");
                     editor.apply();
+
                     if (sharedPreferences != null) {
                         if (sharedPreferences.getString("QR", "").equals("done")) {
                             Toast.makeText(AdminMain.this, "Lecture Over!", Toast.LENGTH_SHORT).show();
@@ -174,19 +174,19 @@ public class AdminMain extends AppCompatActivity {
                             userData.put("names", Arrays.asList("Admin"));
 
                             if (name.equals("20216")) {
-                                db.collection("Mobile Computing").document("August").collection("Days")
+                                db.collection("Mobile Computing").document(monthname).collection("Days")
                                         .document(dt).set(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {
-                                                Toast.makeText(AdminMain.this, "OK", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(AdminMain.this, "Generated!", Toast.LENGTH_SHORT).show();
                                             }
                                         });
                             } else {
-                                db.collection("Machine Learning").document("August").collection("Days")
+                                db.collection("Machine Learning").document(monthname).collection("Days")
                                         .document(dt).set(userData).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {
-                                                Toast.makeText(AdminMain.this, "OK", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(AdminMain.this, "Generated!", Toast.LENGTH_SHORT).show();
                                             }
                                         });
                             }
