@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.view.Menu;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -50,6 +51,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private final int STORAGE_PERMISSION_CODE = 1;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    CircleImageView img;
     TextView name,email;
     FirebaseDatabase database;
 
@@ -80,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -102,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         name = headerView.findViewById(R.id.username);
         email = headerView.findViewById(R.id.useremail);
-        CircleImageView img = headerView.findViewById(R.id.usericon);
+        img = headerView.findViewById(R.id.usericon);
 
         database.getReference().child("Admin").child(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -114,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                             email.setText(usermodels.getEmail());
                             Glide.with(MainActivity.this).load(usermodels.getProfile_img()).into(img);
                         }else {
-
+                            Toast.makeText(MainActivity.this, "no", Toast.LENGTH_SHORT).show();
                         }
                     }
 
